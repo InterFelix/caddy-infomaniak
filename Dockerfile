@@ -8,7 +8,7 @@ RUN xcaddy build \
     --with github.com/caddy-dns/infomaniak
 
 # Stage 2: Verwende das offizielle Caddy-Image
-FROM caddy:2.9.1
+FROM caddy:2.11.4
 
 # Kopiere das Caddy-Binary aus der Build-Phase
 COPY --from=builder /usr/bin/caddy /usr/bin/caddy
