@@ -1,17 +1,23 @@
 name: Renovate
 on:
-  schedule:
-    # The "*" (#42, asterisk) character has special semantics in YAML, so this
-    # string has to be quoted.
-    - cron: '0 0/6 * * *'
+  # Allows manual triggering from the Actions tab
   workflow_dispatch:
+  # Runs automatically every hour to check for dependencies
+  schedule:
+    - cron: '0 * * * *'
+
 jobs:
   renovate:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v7.0.1
+        uses: actions/checkout@v4
+
       - name: Self-hosted Renovate
-        uses: renovatebot/github-action@v46.2.3
+        uses: renovatebot/github-action@v41.0.14
         with:
+          configurationFile: .github/renovate.json
           token: ${{ secrets.RENOVATE_TOKEN }}
+        env:
+          # Tells Renovate to only run on this specific repository
+          RENOVATE_REPOSITORIES: ${{ github.repository }}

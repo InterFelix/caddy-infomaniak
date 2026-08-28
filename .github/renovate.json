@@ -1,4 +1,9 @@
 {
+  "$schema": "https://renovatebot.com",
+  "extends": [
+    "config:recommended"
+  ],
+  "autodiscover": false,
   "packageRules": [
     {
       "matchDatasources": ["docker"],
