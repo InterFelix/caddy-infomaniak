@@ -5,7 +5,8 @@ FROM caddy:builder AS builder
 
 # Hinzufügen des Cloudflare DNS-Plugins zu Caddy
 RUN xcaddy build \
-    --with github.com/caddy-dns/infomaniak
+    --with github.com/caddy-dns/infomaniak \
+    --with github.com/hslatman/caddy-crowdsec-bouncer/crowdsec
 
 # Stage 2: Verwende das offizielle Caddy-Image
 FROM caddy:2.11.4
