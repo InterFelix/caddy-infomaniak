@@ -9,7 +9,7 @@ RUN xcaddy build \
     --with github.com/hslatman/caddy-crowdsec-bouncer/crowdsec
 
 # Stage 2: Verwende das offizielle Caddy-Image
-FROM caddy:2.11.4
+FROM caddy:2.11.7
 
 # Kopiere das Caddy-Binary aus der Build-Phase
 COPY --from=builder /usr/bin/caddy /usr/bin/caddy
